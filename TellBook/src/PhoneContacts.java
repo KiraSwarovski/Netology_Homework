@@ -4,9 +4,7 @@ import java.util.Collections;
 public class PhoneContacts {
     private Map<String, LinkedList<Contact>> listOfContacts = new HashMap<>();
 
-//    public PhoneContacts() {
-//        this.listOfContacts = new HashMap<String, LinkedList<Contact>>();
-//    }
+
 
     public void addGroup(String group) {
         if (listOfContacts.containsKey(group)) {

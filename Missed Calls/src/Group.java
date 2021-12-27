@@ -1,23 +1,19 @@
 import java.util.Objects;
 
 public enum Group {
-    WORK("Work"),
-    FRIENDS("Friends"),
-    FAMILY("Family");
-
-    private String group;
-
-     Group(String group) {
-        this.group = group;
-    }
-
-
-    public static Group isEqual(String text){
-        for (Group gr: Group.values()) {
-            if(gr.group.equalsIgnoreCase(text)){
-                return gr;
-            }
-        }
-        return null;
-    }
+    WORK, FAMILY, FRIENDS;
 }
+
+
+
+
+
+//    public static Group isEqual(String text){
+//        for (Group gr: Group.values()) {
+//            if(gr.group.equalsIgnoreCase(text)){
+//                return gr;
+//            }
+//        }
+//        return null;
+//    }
+

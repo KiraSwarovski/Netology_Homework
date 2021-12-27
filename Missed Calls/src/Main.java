@@ -11,26 +11,34 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         int chooseAction;
         String input = "";
-        while (!"5".equals(input)) {
-            printAction();
+        while (!"6".equals(input)) {
+            System.out.println("Menu:\n" +
+                    "1. Add contact\n" +
+                    "2. Add missed call\n" +
+                    "3. Display all missed calls\n" +
+                    "4. Clear missed calls\n" +
+                    "5. Find contact by phone\n" +
+                    "6. Exit\n"+
+                    "Select an item from the menu (1-5):");
             input = scanner.nextLine();
             try {
                 chooseAction = Integer.parseInt(input);
             } catch (NumberFormatException e) {
-                System.out.println("Choose action 1-4. Try again");
+                System.out.println("Choose action 1-5. Try again");
                 continue;
             }
+            Contact contact;
             switch (chooseAction) {
                 case 1:
                     System.out.println("Enter new contact.\n" +
                             "Write his *Name Surname PhoneNumber Group* separated by 'space'.");
-                    Contact contact;
+
                     String contactBIO = scanner.nextLine();
                     String[] contactInfo = contactBIO.split(" ");
                     if (contactInfo.length == 4) {
                         contact = new Contact(contactInfo[0], contactInfo[1],
-                                contactInfo[2], Group.isEqual(contactInfo[3]));
-                        if (phoneContacts.contacts.containsValue(contact)) {
+                                contactInfo[2], Group.valueOf(contactInfo[3]));
+                        if (phoneContacts.getContacts().containsValue(contact)) {
                             System.out.println("This contact exists");
                         } else {
                             phoneContacts.addContact(contactInfo[2], contact);
@@ -54,17 +62,13 @@ public class Main {
                     missedCalls.clearContact();
                     System.out.println("Missed calls has been cleared");
                     break;
+                case 5:
+                    System.out.println("Write number to find Contact by number");
+                    String number = scanner.nextLine();
+                    contact = phoneContacts.searchContactByPhoneNumber(number);
+                    System.out.println(contact);
+                    break;
             }
         }
-    }
-
-    public static void printAction() {
-        System.out.println("Menu:\n" +
-                "1. Add contact\n" +
-                "2. Add missed call\n" +
-                "3. Display all missed calls\n" +
-                "4. Clear missed calls\n" +
-                "5. Exit\n" +
-                "Select an item from the menu (1-4):");
     }
 }

@@ -7,9 +7,7 @@ public class PhoneBook {
         this.groups = new HashMap<String, LinkedList<Contact>>();
     }
 
-    public HashMap<String, LinkedList<Contact>> getGroups() {
-        return groups;
-    }
+
 
     public void addGroup(String groupName) {
         if (groups.containsKey(groupName)) {
